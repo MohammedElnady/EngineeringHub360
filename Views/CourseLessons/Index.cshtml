@@ -1,0 +1,128 @@
+﻿@model IEnumerable<EngineeringHub360.Models.CourseLesson>
+
+@{
+    ViewData["Title"] = "دروس الدورات";
+}
+
+<div class="container py-5">
+
+    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+
+        <div>
+            <h1 class="fw-bold">
+                دروس الدورات
+            </h1>
+
+            <p class="text-muted mb-0">
+                إدارة فيديوهات وملفات الدورات
+            </p>
+        </div>
+
+        <a asp-controller="CourseLessons"
+           asp-action="Create"
+           class="btn btn-success">
+            إضافة درس جديد
+        </a>
+
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            لم تتم إضافة دروس حتى الآن.
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+
+            @foreach (var lesson in Model)
+            {
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="card h-100 shadow border-0">
+
+                        <div class="card-body">
+
+                            <span class="badge bg-primary mb-2">
+                                الدرس @lesson.LessonOrder
+                            </span>
+
+                            @if (lesson.IsFreePreview)
+                            {
+                                <span class="badge bg-success mb-2">
+                                    معاينة مجانية
+                                </span>
+                            }
+
+                            <h4>
+                                @lesson.Title
+                            </h4>
+
+                            <p class="text-primary fw-bold">
+                                @lesson.Course.Title
+                            </p>
+
+                            <p>
+                                @lesson.Description
+                            </p>
+
+                            <p class="text-muted">
+                                المدة: @lesson.DurationMinutes دقيقة
+                            </p>
+
+                            <div class="d-grid gap-2">
+
+                                @if (!string.IsNullOrWhiteSpace(lesson.VideoPath))
+                                {
+                                    <a href="@lesson.VideoPath"
+                                       target="_blank"
+                                       class="btn btn-primary">
+
+                                        تشغيل الفيديو
+
+                                    </a>
+                                }
+
+                                @if (!string.IsNullOrWhiteSpace(lesson.PdfPath))
+                                {
+                                    <a href="@lesson.PdfPath"
+                                       target="_blank"
+                                       class="btn btn-danger">
+
+                                        فتح ملف PDF
+
+                                    </a>
+                                }
+
+                                @if (!string.IsNullOrWhiteSpace(lesson.ExcelPath))
+                                {
+                                    <a href="@lesson.ExcelPath"
+                                       target="_blank"
+                                       class="btn btn-success">
+
+                                        تحميل ملف Excel
+
+                                    </a>
+                                }
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    }
+
+</div>

@@ -1,0 +1,77 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width:768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background: #f5f7fa;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.hero-section {
+    background: linear-gradient(135deg,#0A4D8C,#10B981);
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
+}
+
+.stats-section {
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+    .stats-section h2 {
+        font-size: 3rem;
+    }
+
+.why-us-section .card,
+.courses-section .card,
+.store-section .card {
+    border: none;
+    border-radius: 20px;
+    transition: .3s;
+}
+
+    .why-us-section .card:hover,
+    .courses-section .card:hover,
+    .store-section .card:hover {
+        transform: translateY(-8px);
+    }
+
+.services-section .card {
+    border: none;
+    border-radius: 20px;
+}
+
+.card {
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #25D366;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    z-index: 9999;
+}
+
+    .whatsapp-float:hover {
+        color: white;
+        background-color: #1ebe5d;
+    }

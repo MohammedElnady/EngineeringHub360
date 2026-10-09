@@ -1,0 +1,220 @@
+﻿@model EngineeringHub360.Models.CourseLessonUploadViewModel
+
+@{
+    ViewData["Title"] = "إضافة درس جديد";
+}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="card border-0 shadow">
+
+                <div class="card-header bg-primary text-white py-3">
+                    <h2 class="mb-0">
+                        إضافة درس ورفع الملفات
+                    </h2>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form asp-controller="CourseLessons"
+                          asp-action="Create"
+                          method="post"
+                          enctype="multipart/form-data">
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label asp-for="CourseId"
+                                   class="form-label">
+                            </label>
+
+                            <select asp-for="CourseId"
+                                    asp-items="ViewBag.Courses"
+                                    class="form-select">
+
+                                <option value="">
+                                    اختر الدورة
+                                </option>
+
+                            </select>
+
+                            <span asp-validation-for="CourseId"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label asp-for="Title"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="Title"
+                                   class="form-control" />
+
+                            <span asp-validation-for="Title"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label asp-for="Description"
+                                   class="form-label">
+                            </label>
+
+                            <textarea asp-for="Description"
+                                      class="form-control"
+                                      rows="4">
+                            </textarea>
+
+                            <span asp-validation-for="Description"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="LessonOrder"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="LessonOrder"
+                                       class="form-control" />
+
+                                <span asp-validation-for="LessonOrder"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                <label asp-for="DurationMinutes"
+                                       class="form-label">
+                                </label>
+
+                                <input asp-for="DurationMinutes"
+                                       class="form-control" />
+
+                                <span asp-validation-for="DurationMinutes"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label asp-for="VideoFile"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="VideoFile"
+                                   class="form-control"
+                                   accept=".mp4,.webm,.mov" />
+
+                            <div class="form-text">
+                                الصيغ المسموحة: MP4 وWEBM وMOV.
+                                الحد الأقصى 100 MB.
+                            </div>
+
+                            <span asp-validation-for="VideoFile"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label asp-for="PdfFile"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="PdfFile"
+                                   class="form-control"
+                                   accept=".pdf" />
+
+                            <div class="form-text">
+                                الحد الأقصى 20 MB.
+                            </div>
+
+                            <span asp-validation-for="PdfFile"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label asp-for="ExcelFile"
+                                   class="form-label">
+                            </label>
+
+                            <input asp-for="ExcelFile"
+                                   class="form-control"
+                                   accept=".xlsx,.xls,.xlsm,.csv" />
+
+                            <div class="form-text">
+                                الصيغ المسموحة: XLSX وXLS وXLSM وCSV.
+                            </div>
+
+                            <span asp-validation-for="ExcelFile"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                        <div class="form-check mb-4">
+
+                            <input asp-for="IsFreePreview"
+                                   class="form-check-input" />
+
+                            <label asp-for="IsFreePreview"
+                                   class="form-check-label">
+                            </label>
+
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-success btn-lg">
+                            رفع وحفظ الدرس
+                        </button>
+
+                        <a asp-controller="CourseLessons"
+                           asp-action="Index"
+                           class="btn btn-outline-secondary btn-lg">
+                            رجوع
+                        </a>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync(
+            "_ValidationScriptsPartial");
+    }
+}

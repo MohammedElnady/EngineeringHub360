@@ -1,0 +1,93 @@
+﻿@{
+    ViewData["Title"] = "لوحة الإدارة";
+}
+
+<div class="container py-5">
+
+    <h1 class="mb-4">
+        لوحة إدارة الأكاديمية
+    </h1>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+
+            <div class="card shadow h-100">
+
+                <div class="card-body text-center">
+
+                    <h3>📚 إدارة الدروس</h3>
+
+                    <p>
+                        إضافة ورفع الدروس والملفات
+                    </p>
+
+                    <a asp-controller="CourseLessons"
+                       asp-action="Create"
+                       class="btn btn-primary">
+
+                        إضافة درس جديد
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow h-100">
+
+                <div class="card-body text-center">
+
+                    <h3>🎓 عرض الدورات</h3>
+
+                    <p>
+                        مراجعة جميع الدورات
+                    </p>
+
+                    <a asp-controller="Academy"
+                       asp-action="Index"
+                       class="btn btn-success">
+
+                        عرض الأكاديمية
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card shadow h-100">
+
+                <div class="card-body text-center">
+
+                    <h3>📁 الدروس المرفوعة</h3>
+
+                    <p>
+                        إدارة جميع الدروس
+                    </p>
+
+                    <a asp-controller="CourseLessons"
+                       asp-action="Index"
+                       class="btn btn-warning">
+
+                        عرض الدروس
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

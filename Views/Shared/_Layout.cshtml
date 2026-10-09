@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - Engineering Hub 360</title>
+
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+    <link rel="stylesheet"
+          href="~/EngineeringHub360.styles.css"
+          asp-append-version="true" />
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+            <div class="container-fluid">
+
+                <a class="navbar-brand fw-bold"
+                   asp-area=""
+                   asp-controller="Home"
+                   asp-action="Index">
+                    Engineering Hub 360
+                </a>
+
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mainNavbar"
+                        aria-controls="mainNavbar"
+                        aria-expanded="false"
+                        aria-label="فتح القائمة">
+
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse"
+                     id="mainNavbar">
+
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-area=""
+                               asp-controller="Home"
+                               asp-action="Index">
+                                الرئيسية
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-area=""
+                               asp-controller="Academy"
+                               asp-action="Index">
+                                الأكاديمية
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-area=""
+                               asp-controller="Store"
+                               asp-action="Index">
+                                المتجر
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-area=""
+                               asp-controller="Pricing"
+                               asp-action="Index">
+                                التسعير الهندسي
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-area=""
+                               asp-controller="Projects"
+                               asp-action="Index">
+                                إدارة المشاريع
+                            </a>
+                        </li>
+
+                        @if (User.Identity?.IsAuthenticated == true &&
+                        User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   asp-area=""
+                                   asp-controller="Admin"
+                                   asp-action="Index">
+                                    لوحة الإدارة
+                                </a>
+                            </li>
+                        }
+
+                    </ul>
+
+                    <div class="d-flex gap-2 align-items-center">
+
+                        <a class="btn btn-success"
+                           asp-area=""
+                           asp-controller="Academy"
+                           asp-action="Index">
+                            ابدأ الآن
+                        </a>
+
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <span class="text-white small">
+                                @User.Identity.Name
+                            </span>
+
+                            <form asp-area="Identity"
+                                  asp-page="/Account/Logout"
+                                  method="post"
+                                  class="d-inline">
+
+                                <button type="submit"
+                                        class="btn btn-outline-light">
+                                    تسجيل الخروج
+                                </button>
+                            </form>
+                        }
+                        else
+                        {
+                            <a class="btn btn-outline-light"
+                               asp-area="Identity"
+                               asp-page="/Account/Login">
+                                تسجيل الدخول
+                            </a>
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <div class="container-fluid p-0">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top bg-dark text-white text-center py-4 mt-5">
+        <div class="container">
+
+            <p class="mb-1">
+                &copy; 2026 Engineering Hub 360
+            </p>
+
+            <p class="mb-0">
+                منصة هندسية متكاملة للتعليم والتسعير وإدارة المشاريع
+            </p>
+
+        </div>
+    </footer>
+
+    <a href="https://wa.me/201011083339"
+       target="_blank"
+       class="whatsapp-float">
+        WhatsApp
+    </a>
+
+    <scriptbootstrap.bundle.min.jsscript>
+        <scriptte.jsscript>
+
+            @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>
